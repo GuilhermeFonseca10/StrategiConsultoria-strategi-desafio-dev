@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Hero List</title>
+  </head>
+  <body>
+    <h1>Hero List</h1>
+    <form action="{{ url_for('add') }}" method="post">
+      <input type="text" name="name" placeholder="Name">
+      <input type="text" name="description" placeholder="Description">
+      <input type="text" name="photo" placeholder="Photo URL">
+      <input type="submit" value="Add">
+    </form>
+   
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Photo</th>
+          <th>Actions</th>
+        </tr>
+        {% for hero in heroes %}
+          <tr>
+            <td>{{ hero.name }}</td>
+            <td>{{ hero.description }}</td>
+            <td><img src="{{ hero.photo }}" alt="{{ hero.name }}"></td>
+            <td>
+              {% if hero.team == 'possible_candidate' %}
+                <a href="{{ url_for('deselect', id=hero.id) }}">Deselect</a>
+              {% else %}
+                <a href="{{ url_for('select', id=hero.id) }}">Select</a>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+<a href="{{ url_for('teams') }}">Teams</a>      
+    </body>
+  </html>
+  

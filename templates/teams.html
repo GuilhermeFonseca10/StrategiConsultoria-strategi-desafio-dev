@@ -1,0 +1,19 @@
+<h1>Teams</h1>
+<form action="{{ url_for('teams') }}" method="post">
+  <input type="text" name="name">
+  <input type="text" name="description">
+  <input type="submit" value="Create Team">
+</form>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  {% for team in teams %}
+  <tr>
+    <td>{{ team.name }}</td>
+    <td>{{ team.description }}</td>
+  </tr>
+  {% endfor %}
+</table>
+ 

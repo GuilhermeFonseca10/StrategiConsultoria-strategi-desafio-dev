@@ -1,0 +1,9 @@
+<h1>Assign Team for {{ hero.name }}</h1>
+<form action="" method="post">
+  <select name="team">
+    {% for team in teams %}
+    <option value="{{ team.id }}">{{ team.name }}</option>
+    {% endfor %}
+  </select>
+  <input type="submit" value="Assign">
+</form>
